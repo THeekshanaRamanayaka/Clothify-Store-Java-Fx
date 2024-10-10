@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.controller.common.SuppliersFormController">
+   <top>
+      <AnchorPane prefHeight="75.0" prefWidth="1030.0" style="-fx-background-color: #9EB9C4;" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Suppliers" AnchorPane.bottomAnchor="10.5" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="11.5">
+               <font>
+                  <Font name="Avenir Next Condensed Medium" size="36.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="55.0" arcWidth="55.0" fill="WHITE" height="55.0" layoutX="858.0" layoutY="-62.0" stroke="BLACK" strokeType="INSIDE" width="55.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="9.0" />
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="873.0" layoutY="-39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="14.0">
+               <image>
+                  <Image url="@../../img/admin/dashboard/Male User Icon.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="695.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" AnchorPane.leftAnchor="666.0" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtDate" layoutX="720.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="06-10-2024" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="856.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="Time :" AnchorPane.leftAnchor="856.0" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtTime" layoutX="910.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="04:12:43" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="txtSearch" layoutX="95.0" layoutY="76.0" prefHeight="32.0" prefWidth="175.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="35.0" />
+            <JFXButton layoutX="240.0" layoutY="35.0" onAction="#btnSearchOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Search">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <AnchorPane prefHeight="373.0" prefWidth="311.0" style="-fx-background-radius: 15px; -fx-background-color: #9db7c267;" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="118.0">
+               <children>
+                  <Text layoutX="17.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID :">
+                     <font>
+                        <Font name="Avenir Next Condensed Demi Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="lblSupplierId" layoutX="101.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#S001">
+                     <font>
+                        <Font name="Avenir Next Condensed Demi Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="txtName" layoutX="31.5" layoutY="115.0" prefHeight="26.0" prefWidth="248.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="31.5">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </JFXTextField>
+                  <Label layoutX="45.0" layoutY="92.0" text="Name" />
+                  <JFXComboBox fx:id="cmbTitle" layoutX="30.0" layoutY="52.0" prefHeight="26.0" prefWidth="131.0" promptText="Select Title" style="-fx-background-color: white;" AnchorPane.rightAnchor="150.0" />
+                  <Label layoutX="45.0" layoutY="162.0" text="E-Mail Address" />
+                  <JFXTextField fx:id="txtEMail" layoutX="31.5" layoutY="185.0" prefHeight="26.0" prefWidth="248.0" style="-fx-background-color: white;">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </JFXTextField>
+                  <Label layoutX="45.0" layoutY="232.0" text="Mobile Number" />
+                  <JFXTextField fx:id="txtMobileNumber" layoutX="31.5" layoutY="255.0" prefHeight="26.0" prefWidth="248.0" style="-fx-background-color: white;">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </JFXTextField>
+                  <Label layoutX="45.0" layoutY="302.0" text="Company" />
+                  <JFXTextField fx:id="txtCompany" layoutX="31.5" layoutY="325.0" prefHeight="26.0" prefWidth="248.0" style="-fx-background-color: white;">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </JFXTextField>
+               </children>
+            </AnchorPane>
+            <Text layoutX="765.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Suppliers" AnchorPane.leftAnchor="765.0" AnchorPane.topAnchor="72.0">
+               <font>
+                  <Font name="Avenir Next Condensed Demi Bold" size="24.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="749.0" layoutY="510.0" onAction="#btnAddSupplierOnAction" prefHeight="32.0" prefWidth="160.0" style="-fx-background-color: #0e0e0e; -fx-background-radius: 38px;" text="Add Supplier" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="719.0" layoutY="565.0" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Update">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="851.0" layoutY="565.0" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Delete">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <TableView fx:id="tblItemDetails" layoutX="71.0" layoutY="138.0" prefHeight="200.0" prefWidth="610.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="118.0">
+              <columns>
+                <TableColumn fx:id="colItemCode" prefWidth="131.19491577148438" text="Item Code" />
+                <TableColumn fx:id="colDescription" prefWidth="339.3051300048828" text="Description" />
+                  <TableColumn fx:id="colQuantity" prefWidth="138.81982421875" text="Quantity" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tblSupplier" layoutX="40.0" layoutY="355.0" prefHeight="310.0" prefWidth="610.0" AnchorPane.leftAnchor="40.0">
+              <columns>
+                <TableColumn fx:id="colSupplierId" prefWidth="75.0" text="Supplier Id" />
+                <TableColumn fx:id="colTitle" prefWidth="62.52168273925781" text="Title" />
+                  <TableColumn fx:id="colName" prefWidth="111.16969299316406" text="Name" />
+                  <TableColumn fx:id="colEMail" prefWidth="153.83029174804688" text="E - Mail " />
+                  <TableColumn fx:id="colContactNo" prefWidth="110.30694580078125" text="Contact No" />
+                  <TableColumn fx:id="colCompany" prefWidth="101.23828125" text="Company" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

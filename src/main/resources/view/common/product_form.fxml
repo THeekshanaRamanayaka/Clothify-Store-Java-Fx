@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="770.0" maxWidth="1030.0" minHeight="770.0" minWidth="1030.0" prefHeight="770.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.controller.common.ProductFormController">
+   <top>
+       <AnchorPane prefHeight="75.0" prefWidth="1030.0" style="-fx-background-color: #9EB9C4;" BorderPane.alignment="CENTER">
+           <Text layoutX="39.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product" AnchorPane.bottomAnchor="11.5" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="11.5">
+              <font>
+                  <Font name="Avenir Next Condensed Medium" size="36.0" />
+              </font>
+           </Text>
+           <Rectangle arcHeight="55.0" arcWidth="55.0" fill="WHITE" height="55.0" layoutX="827.0" layoutY="-62.0" stroke="BLACK" strokeType="INSIDE" width="55.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="9.0" />
+           <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="873.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="14.0">
+               <Image url="@../../img/admin/dashboard/Male User Icon.png" />
+           </ImageView>
+       </AnchorPane>
+   </top>
+   <center>
+       <AnchorPane prefHeight="695.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
+           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" AnchorPane.leftAnchor="666.0" AnchorPane.topAnchor="14.5">
+              <font>
+                  <Font size="16.0" />
+              </font>
+           </Text>
+           <Text fx:id="txtDate" layoutX="718.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="06-10-2024" AnchorPane.topAnchor="14.5">
+              <font>
+                  <Font size="16.0" />
+              </font>
+           </Text>
+           <Text layoutX="857.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="Time :" AnchorPane.topAnchor="14.5">
+              <font>
+                  <Font size="16.0" />
+              </font>
+           </Text>
+           <Text fx:id="txtTime" layoutX="910.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="04:12:43" AnchorPane.topAnchor="14.5">
+              <font>
+                  <Font size="16.0" />
+              </font>
+           </Text>
+           <JFXComboBox fx:id="cmbSelectCategory" layoutX="53.0" layoutY="36.0" prefHeight="26.0" prefWidth="145.0" promptText="Select Category" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="35.0">
+              <padding>
+                  <Insets left="15.0" />
+              </padding>
+           </JFXComboBox>
+           <JFXButton layoutX="214.0" layoutY="33.0" onAction="#btnSearchOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Search" AnchorPane.leftAnchor="214.0" AnchorPane.topAnchor="33.0">
+              <font>
+                  <Font name="System Bold" size="16.0" />
+              </font>
+           </JFXButton>
+           <AnchorPane layoutX="657.0" layoutY="118.0" prefHeight="400.0" prefWidth="311.0" style="-fx-background-radius: 15px; -fx-background-color: #9db7c267;" AnchorPane.leftAnchor="674.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="118.0">
+               <Text layoutX="17.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID :">
+                   <font>
+                       <Font name="Avenir Next Condensed Demi Bold" size="16.0" />
+                   </font>
+               </Text>
+               <Text fx:id="lblProductId" layoutX="101.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#P0001">
+                   <font>
+                       <Font name="Avenir Next Condensed Demi Bold" size="16.0" />
+                   </font>
+               </Text>
+               <JFXTextField fx:id="txtDescription" layoutX="40.0" layoutY="75.0" prefHeight="26.0" prefWidth="248.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="31.5">
+                   <padding>
+                       <Insets left="15.0" right="15.0" />
+                   </padding>
+               </JFXTextField>
+               <Label layoutX="45.0" layoutY="52.0" text="Description" />
+               <Label layoutX="45.0" layoutY="122.0" text="Price" />
+               <JFXTextField fx:id="txtPrice" layoutX="40.0" layoutY="145.0" prefHeight="26.0" prefWidth="248.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5">
+                   <padding>
+                       <Insets left="15.0" right="15.0" />
+                   </padding>
+               </JFXTextField>
+               <Label layoutX="45.0" layoutY="192.0" text="Discount" />
+               <JFXTextField fx:id="txtDiscount" layoutX="40.0" layoutY="215.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5">
+                   <padding>
+                       <Insets left="15.0" right="15.0" />
+                   </padding>
+               </JFXTextField>
+               <JFXTextField fx:id="txtQuantity" layoutX="173.0" layoutY="214.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5">
+                   <padding>
+                       <Insets left="15.0" right="15.0" />
+                   </padding>
+               </JFXTextField>
+               <Label layoutX="179.0" layoutY="192.0" text="Quantity" />
+               <JFXComboBox fx:id="cmbType" layoutX="40.0" layoutY="285.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5" />
+               <Label layoutX="45.0" layoutY="262.0" text="Type" />
+               <Label layoutX="181.0" layoutY="262.0" text="Size" />
+               <JFXComboBox fx:id="cmbSize" layoutX="173.0" layoutY="285.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5" />
+               <Label layoutX="45.0" layoutY="332.0" text="Supplier ID" />
+               <Label layoutX="181.0" layoutY="332.0" text="Supplier Name" />
+               <JFXComboBox fx:id="cmbSupplierId" layoutX="40.0" layoutY="355.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5" />
+               <JFXComboBox fx:id="cmbSupplierName" layoutX="173.0" layoutY="355.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5" />
+           </AnchorPane>
+           <Text layoutX="774.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Product" AnchorPane.leftAnchor="774.0" AnchorPane.topAnchor="72.0">
+              <font>
+                  <Font name="Avenir Next Condensed Demi Bold" size="24.0" />
+              </font>
+           </Text>
+           <JFXButton layoutX="749.0" layoutY="536.0" onAction="#btnAddProductOnAction" prefHeight="32.0" prefWidth="160.0" style="-fx-background-color: #0e0e0e; -fx-background-radius: 38px;" text="Add Product" textFill="WHITE">
+              <font>
+                  <Font name="System Bold Italic" size="16.0" />
+              </font>
+           </JFXButton>
+           <JFXButton layoutX="717.0" layoutY="582.0" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Update">
+              <font>
+                  <Font name="System Bold" size="16.0" />
+              </font>
+           </JFXButton>
+           <JFXButton layoutX="852.0" layoutY="581.0" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Delete">
+              <font>
+                  <Font name="System Bold" size="16.0" />
+              </font>
+           </JFXButton>
+           <TableView fx:id="tblProduct" layoutX="48.0" layoutY="118.0" prefHeight="526.0" prefWidth="603.0" AnchorPane.leftAnchor="48.0">
+               <columns>
+                   <TableColumn fx:id="colProductId" prefWidth="61.96846389770508" text="Product ID" />
+                   <TableColumn fx:id="colDescription" prefWidth="138.4883270263672" text="Description" />
+                   <TableColumn fx:id="colPrice" prefWidth="61.51167297363281" text="Price" />
+                   <TableColumn fx:id="colDiscount" prefWidth="67.24008178710938" text="Discount" />
+                   <TableColumn fx:id="colQuantity" prefWidth="67.74002075195312" text="Quantity" />
+                   <TableColumn fx:id="colType" prefWidth="60.921173095703125" text="Type" />
+                   <TableColumn fx:id="colSize" prefWidth="60.452667236328125" text="Size" />
+                   <TableColumn fx:id="colSupplierId" prefWidth="85.24005126953125" text="Supplier Id" />
+               </columns>
+           </TableView>
+       </AnchorPane>
+   </center>
+</BorderPane>

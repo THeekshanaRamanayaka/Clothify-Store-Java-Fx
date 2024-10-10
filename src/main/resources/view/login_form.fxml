@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="770.0" maxWidth="1280.0" minHeight="770.0" minWidth="1280.0" prefHeight="770.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.controller.LoginFormController">
+   <AnchorPane layoutX="64.0" layoutY="48.0" prefHeight="682.0" prefWidth="1154.0" style="-fx-background-color: #9EB9C4; -fx-background-radius: 15px;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="44.0">
+      <ImageView fitHeight="641.0" fitWidth="628.0" layoutX="2.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="54.0">
+         <Image url="@../img/login/CanvaUpload.png" />
+      </ImageView>
+      <AnchorPane layoutX="585.0" layoutY="72.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #E4F3F8; -fx-background-radius: 15px;" AnchorPane.bottomAnchor="41.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="41.0">
+         <Text layoutX="158.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
+            <font>
+               <Font name="Apple Chancery" size="58.0" />
+            </font>
+         </Text>
+         <JFXTextField fx:id="txtUserName" focusColor="#9eb9c4" layoutX="66.0" layoutY="204.0" prefHeight="50.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 38px;" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0">
+            <padding>
+               <Insets left="25.0" right="25.0" />
+            </padding>
+            <font>
+               <Font size="16.0" />
+            </font>
+         </JFXTextField>
+         <Text layoutX="90.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="325.3349609375">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Text>
+         <Text layoutX="90.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.leftAnchor="90.0">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Text>
+         <JFXTextField fx:id="txtPassword" focusColor="#9eb9c4" layoutX="66.0" layoutY="333.0" prefHeight="50.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 38px;" AnchorPane.rightAnchor="66.0">
+            <padding>
+               <Insets left="25.0" right="25.0" />
+            </padding>
+            <font>
+               <Font size="16.0" />
+            </font>
+         </JFXTextField>
+         <JFXButton fx:id="btnSignIn" layoutX="187.0" layoutY="488.0" onAction="#btnSignInOnAction" prefHeight="55.0" prefWidth="145.0" style="-fx-background-color: #0E0E0E; -fx-background-radius: 38px;" text="Sign In" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </JFXButton>
+         <Text fx:id="txtFogotPassword" layoutX="270.0" layoutY="444.0" onMouseClicked="#txtFogotPasswordOnMouseClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Fogot Password ?" textAlignment="CENTER" underline="true">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Text>
+      </AnchorPane>
+      <ImageView fitHeight="199.0" fitWidth="370.0" layoutX="28.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../img/login/Clothify Store System.png" />
+      </ImageView>
+   </AnchorPane>
+</AnchorPane>

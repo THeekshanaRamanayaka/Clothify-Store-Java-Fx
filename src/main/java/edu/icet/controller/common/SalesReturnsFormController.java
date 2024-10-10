@@ -1,0 +1,80 @@
+package edu.icet.controller.common;
+
+import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.text.Text;
+
+public class SalesReturnsFormController {
+
+    @FXML
+    private TableColumn<?, ?> colAmount;
+
+    @FXML
+    private TableColumn<?, ?> colDate;
+
+    @FXML
+    private TableColumn<?, ?> colDescription;
+
+    @FXML
+    private TableColumn<?, ?> colDiscount;
+
+    @FXML
+    private TableColumn<?, ?> colItemCode;
+
+    @FXML
+    private TableColumn<?, ?> colOrderId;
+
+    @FXML
+    private TableColumn<?, ?> colQuantity;
+
+    @FXML
+    private TableColumn<?, ?> colSize;
+
+    @FXML
+    private TableColumn<?, ?> colType;
+
+    @FXML
+    private TableColumn<?, ?> colUnitPrice;
+
+    @FXML
+    private TableView<?> tblSalesReturns;
+
+    @FXML
+    private Text txtDate;
+
+    @FXML
+    private JFXTextField txtOrderId;
+
+    @FXML
+    private JFXTextField txtQuantity;
+
+    @FXML
+    private Text txtTime;
+
+    @FXML
+    private JFXTextField txtTotal;
+
+    @FXML
+    void btnClearOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnPlaceReturnsOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSaveOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSearchOnAction(ActionEvent event) {
+
+    }
+
+}

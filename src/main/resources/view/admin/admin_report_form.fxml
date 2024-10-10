@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.controller.admin.AdminReportFormController">
+   <top>
+      <AnchorPane prefHeight="75.0" prefWidth="1030.0" style="-fx-background-color: #9EB9C4;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="40.0" layoutY="48.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="12.5">
+               <font>
+                  <Font name="Avenir Next Condensed Medium" size="36.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="55.0" arcWidth="55.0" fill="WHITE" height="55.0" layoutX="840.0" layoutY="-63.0" stroke="BLACK" strokeType="INSIDE" width="55.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="9.0" />
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="873.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="14.0">
+               <image>
+                  <Image url="@../../img/admin/dashboard/Male User Icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="695.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" AnchorPane.leftAnchor="666.0" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtDate" layoutX="720.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="06-10-2024" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="855.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="Time :" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtTime" layoutX="910.0" layoutY="29.96875" strokeType="OUTSIDE" strokeWidth="0.0" text="04:12:43" AnchorPane.rightAnchor="58.4609375" AnchorPane.topAnchor="14.5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="800.0" layoutY="79.0" onAction="#btnGetDailyReport" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Get Daily Report" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="800.0" layoutY="129.0" onAction="#btnGetMonthlyReports" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Get Monthly Report">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="800.0" layoutY="179.0" onAction="#btnGetAnnualReports" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Get Annual Report">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="800.0" layoutY="229.0" onAction="#btnDailyReturns" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Daily Returns" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <LineChart fx:id="chart" layoutX="180.0" layoutY="292.0" prefHeight="393.0" prefWidth="910.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9db7c266" height="200.0" layoutX="99.0" layoutY="64.0" stroke="WHITE" strokeType="INSIDE" width="584.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="60.0" />
+            <Text layoutX="101.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <DatePicker fx:id="date" layoutX="223.0" layoutY="83.0" />
+            <Text layoutX="101.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Count :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="101.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales  :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblSalesCount" alignment="CENTER" layoutX="225.0" layoutY="129.0" prefHeight="33.0" prefWidth="157.0" text="450" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSales" alignment="CENTER" layoutX="225.0" layoutY="178.0" prefHeight="33.0" prefWidth="157.0" text="450" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
