@@ -1,6 +1,7 @@
 package edu.icet.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,22 +21,36 @@ public class LoginFormController {
     private Text txtFogotPassword;
 
     @FXML
-    private JFXTextField txtPassword;
+    private JFXPasswordField txtPassword;
 
     @FXML
     private JFXTextField txtUserName;
 
     @FXML
     void btnSignInOnAction() {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/admin/dashboard_form.fxml")))));
-            stage.setTitle("Admin | Dashboard");
-            stage.setResizable(false);
-            stage.show();
-            btnSignIn.getScene().getWindow().hide();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        if (txtUserName.getText().equals("admin") && txtPassword.getText().equals("123")) {
+            Stage stage = new Stage();
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/admin/dashboard_form.fxml")))));
+                stage.setTitle("Admin | Dashboard");
+                stage.setResizable(false);
+                stage.show();
+                btnSignIn.getScene().getWindow().hide();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (txtUserName.getText().equals("employee") && txtPassword.getText().equals("456")) {
+            Stage stage = new Stage();
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/employee/employee_dashboard_form.fxml")))));
+                stage.setTitle("Employee | Dashboard");
+                stage.setResizable(false);
+                stage.show();
+                btnSignIn.getScene().getWindow().hide();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

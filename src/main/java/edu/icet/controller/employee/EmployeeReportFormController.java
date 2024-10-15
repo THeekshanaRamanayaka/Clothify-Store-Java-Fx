@@ -1,4 +1,4 @@
-package edu.icet.controller.admin;
+package edu.icet.controller.employee;
 
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
@@ -6,7 +6,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
-public class AdminReportFormController {
+public class EmployeeReportFormController {
 
     @FXML
     private LineChart<?, ?> chart;
@@ -32,17 +32,17 @@ public class AdminReportFormController {
     }
 
     @FXML
-    void btnGetAnnualReports() {
+    void btnPrintAnEmployeeReportsOnAction() {
 
     }
 
     @FXML
-    void btnGetDailyReport() {
+    void btnPrintAnInventoryReportOnAction() {
 
     }
 
     @FXML
-    void btnGetMonthlyReports() {
+    void btnPrintAnSupplierReportsOnAction() {
 
     }
 

@@ -97,7 +97,7 @@
                </JFXTextField>
                <Label layoutX="179.0" layoutY="192.0" text="Quantity" />
                <JFXComboBox fx:id="cmbType" layoutX="40.0" layoutY="285.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5" />
-               <Label layoutX="45.0" layoutY="262.0" text="Type" />
+               <Label layoutX="45.0" layoutY="262.0" text="Category" />
                <Label layoutX="181.0" layoutY="262.0" text="Size" />
                <JFXComboBox fx:id="cmbSize" layoutX="173.0" layoutY="285.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5" />
                <Label layoutX="45.0" layoutY="332.0" text="Supplier ID" />

@@ -3,7 +3,6 @@ package edu.icet.controller.common;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -103,27 +102,27 @@ public class PlaceOrderFormController {
     private Text txtTotalDiscount;
 
     @FXML
-    void btnAddToCartOnAction(ActionEvent event) {
+    void btnAddToCartOnAction() {
 
     }
 
     @FXML
-    void btnCancelOnAction(ActionEvent event) {
+    void btnCancelOnAction() {
 
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnClearOnAction() {
 
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
+    void btnPlaceOrderOnAction() {
 
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction() {
 
     }
 

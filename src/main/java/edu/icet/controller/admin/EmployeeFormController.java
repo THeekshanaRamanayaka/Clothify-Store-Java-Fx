@@ -10,6 +10,9 @@ import javafx.scene.text.Text;
 public class EmployeeFormController {
 
     @FXML
+    private JFXComboBox<?> cmbRole;
+
+    @FXML
     private JFXComboBox<?> cmbTitle;
 
     @FXML
@@ -56,6 +59,9 @@ public class EmployeeFormController {
 
     @FXML
     private JFXTextField txtName;
+
+    @FXML
+    private JFXTextField txtPassword;
 
     @FXML
     private JFXTextField txtSearch;

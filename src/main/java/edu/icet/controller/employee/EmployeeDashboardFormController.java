@@ -1,4 +1,4 @@
-package edu.icet.controller.admin;
+package edu.icet.controller.employee;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
@@ -13,24 +13,23 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class DashboardFormController implements Initializable {
+public class EmployeeDashboardFormController implements Initializable {
 
     @FXML
-    private BorderPane boarderPane;
+    private BorderPane borderPane;
 
     @FXML
     private JFXButton btnLogout;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadForm("/view/admin/dash_details_form.fxml");
+        loadForm("/view/employee/employee_dashboard_detail_form.fxml");
     }
 
     private void loadForm(String path) {
-        System.out.println(path);
         try {
-            BorderPane borderPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
-            boarderPane.setCenter(borderPane);
+            BorderPane borderPane1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
+            borderPane.setCenter(borderPane1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -43,12 +42,7 @@ public class DashboardFormController implements Initializable {
 
     @FXML
     void btnDashboardOnAction() {
-        loadForm("/view/admin/dash_details_form.fxml");
-    }
-
-    @FXML
-    void btnEmployeesOnAction() {
-        loadForm("/view/admin/employee_form.fxml");
+        loadForm("/view/employee/employee_dashboard_detail_form.fxml");
     }
 
     @FXML
@@ -63,6 +57,11 @@ public class DashboardFormController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void btnOrderHistoryOnAction() {
+        loadForm("/view/common/order_history_form.fxml");
     }
 
     @FXML
@@ -82,7 +81,7 @@ public class DashboardFormController implements Initializable {
 
     @FXML
     void btnReportsOnAction() {
-        loadForm("/view/admin/admin_report_form.fxml");
+        loadForm("/view/employee/employee_report_form.fxml");
     }
 
     @FXML
@@ -93,10 +92,5 @@ public class DashboardFormController implements Initializable {
     @FXML
     void btnSuppliersOnAction() {
         loadForm("/view/common/suppliers_form.fxml");
-    }
-
-    @FXML
-    void btnOrderHistoryOnAction() {
-        loadForm("/view/common/order_history_form.fxml");
     }
 }

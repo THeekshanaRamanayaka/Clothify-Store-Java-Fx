@@ -2,7 +2,6 @@ package edu.icet.controller.common;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -74,22 +73,22 @@ public class ProductFormController {
     private Text txtTime;
 
     @FXML
-    void btnAddProductOnAction(ActionEvent event) {
+    void btnAddProductOnAction() {
 
     }
 
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction() {
 
     }
 
     @FXML
-    void btnSearchOnAction(ActionEvent event) {
+    void btnSearchOnAction() {
 
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction() {
 
     }
 

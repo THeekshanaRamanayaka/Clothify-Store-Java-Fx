@@ -1,11 +1,9 @@
 package edu.icet.controller.common;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -42,17 +40,17 @@ public class ProfileFormController {
     private Text txtTime;
 
     @FXML
-    void btnCancelOnAction(ActionEvent event) {
+    void btnCancelOnAction() {
 
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction() {
 
     }
 
     @FXML
-    void txtResetPasswordOnMouseClicked(MouseEvent event) {
+    void txtResetPasswordOnMouseClicked() {
         Stage stage = new Stage();
         try {
             stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/password_reset_form.fxml")))));

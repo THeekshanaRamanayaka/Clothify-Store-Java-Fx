@@ -1,7 +1,6 @@
 package edu.icet.controller.common;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -58,23 +57,22 @@ public class SalesReturnsFormController {
     private JFXTextField txtTotal;
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnClearOnAction() {
 
     }
 
     @FXML
-    void btnPlaceReturnsOnAction(ActionEvent event) {
+    void btnPlaceReturnsOnAction() {
 
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event) {
+    void btnSaveOnAction() {
 
     }
 
     @FXML
-    void btnSearchOnAction(ActionEvent event) {
+    void btnSearchOnAction() {
 
     }
-
 }
