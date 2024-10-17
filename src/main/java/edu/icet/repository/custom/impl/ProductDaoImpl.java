@@ -1,6 +1,7 @@
 package edu.icet.repository.custom.impl;
 
 import edu.icet.model.Product;
+import edu.icet.model.ProductDetails;
 import edu.icet.repository.custom.ProductDao;
 import edu.icet.util.CrudUtil;
 import javafx.collections.FXCollections;
@@ -64,7 +65,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product search(String employeeId) {
+    public Product search(String id) {
         return null;
     }
 
@@ -120,6 +121,25 @@ public class ProductDaoImpl implements ProductDao {
                 ));
             }
             return productObservableList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public ObservableList<ProductDetails> getProductDetailsById(String supplierId) {
+        ObservableList<ProductDetails> productObservableList = FXCollections.observableArrayList();
+        String SQL = "SELECT productId, productDescription, quantity FROM product WHERE supplierId = ?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL, supplierId);
+            while (resultSet.next()) {
+                productObservableList.add(new ProductDetails(
+                        resultSet.getString("productId"),
+                        resultSet.getString("productDescription"),
+                        resultSet.getString("quantity")
+                ));
+            }
+            return  productObservableList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

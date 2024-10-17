@@ -1,6 +1,7 @@
 package edu.icet.service.custom.impl;
 
 import edu.icet.model.Product;
+import edu.icet.model.ProductDetails;
 import edu.icet.repository.DaoFactory;
 import edu.icet.repository.custom.ProductDao;
 import edu.icet.service.custom.ProductService;
@@ -47,5 +48,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ObservableList<Product> getAllProducts() {
         return productDao.getAll();
+    }
+
+    @Override
+    public ObservableList<ProductDetails> searchProductById(String supplierId) {
+        return productDao.getProductDetailsById(supplierId);
     }
 }

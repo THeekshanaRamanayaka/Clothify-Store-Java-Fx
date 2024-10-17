@@ -3,6 +3,7 @@ package edu.icet.repository;
 import edu.icet.repository.custom.impl.CustomerDaoImpl;
 import edu.icet.repository.custom.impl.EmployeeDaoImpl;
 import edu.icet.repository.custom.impl.ProductDaoImpl;
+import edu.icet.repository.custom.impl.SupplierDaoImpl;
 import edu.icet.util.DaoType;
 
 public class DaoFactory {
@@ -18,6 +19,7 @@ public class DaoFactory {
             case Employee -> (T) new EmployeeDaoImpl();
             case Product -> (T) new ProductDaoImpl();
             case Customer -> (T) new CustomerDaoImpl();
+            case Supplier -> (T) new SupplierDaoImpl();
         };
     }
 }
