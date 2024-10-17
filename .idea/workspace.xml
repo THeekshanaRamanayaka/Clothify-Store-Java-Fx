@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="employee crud operations complete">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/ProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/impl/ProductDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/impl/ProductServiceImpl.java" afterDir="false" />
+    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="product crud operations complete">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/CustomerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/impl/CustomerDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/impl/CustomerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/EmployeeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/EmployeeFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/CustomerFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/ProductFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/ProductFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/repository/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/DaoFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/service/ServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/ServiceFactory.java" afterDir="false" />
@@ -124,12 +126,21 @@
       <option name="project" value="LOCAL" />
       <updated>1729134058267</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="product crud operations complete">
+      <option name="closed" value="true" />
+      <created>1729151777068</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729151777068</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create ui for employee dashboard &amp; create layered architecture packages" />
     <MESSAGE value="employee crud operations complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="employee crud operations complete" />
+    <MESSAGE value="product crud operations complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="product crud operations complete" />
   </component>
 </project>

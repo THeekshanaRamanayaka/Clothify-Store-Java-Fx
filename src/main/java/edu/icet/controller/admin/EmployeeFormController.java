@@ -114,11 +114,11 @@ public class EmployeeFormController implements Initializable {
         roles.add("Employee");
         cmbRole.setItems(roles);
 
-        tblEmployee.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
+        tblEmployee.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 setTextToValue(newValue);
             }
-        }));
+        });
         loadTable();
     }
 
@@ -214,7 +214,7 @@ public class EmployeeFormController implements Initializable {
             return false;
         }
         if (!isValidEmail(employee.getEmail())) {
-            new Alert(Alert.AlertType.ERROR, "Address is required.").show();
+            new Alert(Alert.AlertType.ERROR, "E-Mail Address is required.").show();
             return false;
         }
         if (!employee.getMobileNumber().matches("\\d{10}")) {

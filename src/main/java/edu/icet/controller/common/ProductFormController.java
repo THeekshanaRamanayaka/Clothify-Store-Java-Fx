@@ -2,7 +2,6 @@ package edu.icet.controller.common;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import edu.icet.model.Employee;
 import edu.icet.model.Product;
 import edu.icet.service.ServiceFactory;
 import edu.icet.service.custom.ProductService;
@@ -97,7 +96,7 @@ public class ProductFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadDateAndTime();
-        //lblProductId.setText(generateProductId());
+        lblProductId.setText(generateProductId());
 
         colProductId.setCellValueFactory(new PropertyValueFactory<>("productId"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
