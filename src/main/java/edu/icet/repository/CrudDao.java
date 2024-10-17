@@ -1,4 +1,12 @@
 package edu.icet.repository;
 
-public interface CrudDao {
+import edu.icet.model.Employee;
+import javafx.collections.ObservableList;
+
+public interface CrudDao<T> extends SuperDao {
+    boolean save(T t);
+    ObservableList<T> getAll();
+    boolean delete(String id);
+    T search(String employeeId);
+    boolean update(T t);
 }

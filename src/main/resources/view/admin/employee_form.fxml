@@ -112,17 +112,17 @@
                <Font name="Avenir Next Condensed Demi Bold" size="24.0" />
             </font>
          </Text>
-         <JFXButton layoutX="749.0" layoutY="587.0" onAction="#btnAddEmployeeOnAction" prefHeight="32.0" prefWidth="160.0" style="-fx-background-color: #0e0e0e; -fx-background-radius: 38px;" text="Add Employee" textFill="WHITE">
+         <JFXButton layoutX="719.0" layoutY="587.0" onAction="#btnAddEmployeeOnAction" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #0e0e0e; -fx-background-radius: 38px;" text="Add Employee" textFill="WHITE" AnchorPane.leftAnchor="719.0">
             <font>
                <Font name="System Bold Italic" size="16.0" />
             </font>
          </JFXButton>
-         <JFXButton layoutX="719.0" layoutY="630.0" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Update">
+         <JFXButton layoutX="719.0" layoutY="630.0" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Update" AnchorPane.leftAnchor="719.0">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
          </JFXButton>
-         <JFXButton layoutX="865.0" layoutY="630.0" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Delete">
+         <JFXButton layoutX="865.0" layoutY="630.0" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Delete" AnchorPane.rightAnchor="75.0">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
@@ -130,7 +130,7 @@
          <TableView fx:id="tblEmployee" layoutX="76.0" layoutY="141.0" prefHeight="540.0" prefWidth="600.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="118.0">
             <columns>
                <TableColumn fx:id="colEmployeeId" prefWidth="75.0" text="Employee Id" />
-               <TableColumn fx:id="colTitle" prefWidth="58.69055938720703" text="Title" />
+               <TableColumn fx:id="colTitle" prefWidth="58.69055938720703" text="Role" />
                <TableColumn fx:id="colName" prefWidth="82.06355285644531" text="Name" />
                <TableColumn fx:id="colAddress" prefWidth="84.48623657226562" text="Address" />
                <TableColumn fx:id="colEMail" prefWidth="116.51382446289062" text="E - Mail" />
@@ -138,6 +138,11 @@
                <TableColumn fx:id="colCompany" prefWidth="85.84527587890625" text="Company" />
             </columns>
          </TableView>
+         <JFXButton layoutX="865.0" layoutY="588.0" onAction="#btnClearOnAction" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9db7c267; -fx-background-radius: 38px;" text="Clear" AnchorPane.rightAnchor="75.0">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </JFXButton>
       </AnchorPane>
    </center>
 </BorderPane>
