@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="create ui for employee dashboard &amp; create layered architecture packages">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="employee crud operations complete">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/ProductDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/impl/ProductDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/impl/ProductServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/EmployeeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/EmployeeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/repository/CrudDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/CrudDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/EmployeeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/EmployeeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/impl/EmployeeDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/impl/EmployeeDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/employee_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/employee_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/ProductFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/ProductFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/repository/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/service/ServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/ServiceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/util/DaoType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/util/DaoType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/util/ServiceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/util/ServiceType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -116,11 +116,20 @@
       <option name="project" value="LOCAL" />
       <updated>1729027656914</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="employee crud operations complete">
+      <option name="closed" value="true" />
+      <created>1729134058267</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729134058267</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create ui for employee dashboard &amp; create layered architecture packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="create ui for employee dashboard &amp; create layered architecture packages" />
+    <MESSAGE value="employee crud operations complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="employee crud operations complete" />
   </component>
 </project>
