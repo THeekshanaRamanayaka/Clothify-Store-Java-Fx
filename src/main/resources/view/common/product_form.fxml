@@ -102,8 +102,12 @@
                <JFXComboBox fx:id="cmbSize" layoutX="173.0" layoutY="285.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5" />
                <Label layoutX="45.0" layoutY="332.0" text="Supplier ID" />
                <Label layoutX="181.0" layoutY="332.0" text="Supplier Name" />
-               <JFXComboBox fx:id="cmbSupplierId" layoutX="40.0" layoutY="355.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5" />
-               <JFXComboBox fx:id="cmbSupplierName" layoutX="173.0" layoutY="355.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5" />
+               <JFXComboBox fx:id="cmbSupplierId" layoutX="40.0" layoutY="355.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="31.5" AnchorPane.topAnchor="355.0" />
+            <JFXTextField fx:id="txtSupplierName" layoutX="165.0" layoutY="214.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="31.5" AnchorPane.topAnchor="355.0">
+               <padding>
+                  <Insets left="15.0" right="15.0" />
+               </padding>
+            </JFXTextField>
            </AnchorPane>
            <Text layoutX="774.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Product" AnchorPane.leftAnchor="774.0" AnchorPane.topAnchor="72.0">
               <font>

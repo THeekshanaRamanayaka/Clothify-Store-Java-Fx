@@ -3,8 +3,10 @@ package edu.icet.controller.common;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import edu.icet.model.Product;
+import edu.icet.model.Supplier;
 import edu.icet.service.ServiceFactory;
 import edu.icet.service.custom.ProductService;
+import edu.icet.service.custom.SupplierService;
 import edu.icet.util.ServiceType;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -36,9 +38,6 @@ public class ProductFormController implements Initializable {
 
     @FXML
     private JFXComboBox<String> cmbSupplierId;
-
-    @FXML
-    private JFXComboBox<String> cmbSupplierName;
 
     @FXML
     private JFXComboBox<String> cmbType;
@@ -89,9 +88,13 @@ public class ProductFormController implements Initializable {
     private JFXTextField txtQuantity;
 
     @FXML
+    private JFXTextField txtSupplierName;
+
+    @FXML
     private Text txtTime;
 
     ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+    SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -128,15 +131,24 @@ public class ProductFormController implements Initializable {
         sizes.add("XXL");
         cmbSize.setItems(sizes);
 
-        loadSupplierIds();
-        loadSupplierNames();
-
         tblProduct.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 setTextToValue(newValue);
             }
         });
         loadTable();
+
+        cmbSupplierId.getSelectionModel().selectedItemProperty().addListener((observableValue, s, newValue) -> {
+            if (newValue != null) {
+                searchSupplierNames(newValue);
+            }
+        });
+        loadSupplierNames();
+    }
+
+    private void searchSupplierNames(String supplierId) {
+        Supplier supplier = supplierService.searchSupplier(supplierId);
+        txtSupplierName.setText(supplier.getSupplierName());
     }
 
     private void setTextToValue(Product newValue) {
@@ -151,13 +163,7 @@ public class ProductFormController implements Initializable {
     }
 
     private void loadSupplierNames() {
-        //TODO implementation soon
-        //cmbSupplierId.setItems(supplierService.getSupplierIds());
-    }
-
-    private void loadSupplierIds() {
-        //TODO implementation soon
-        //cmbSupplierName.setItems(supplierService.getSupplierNames());
+        cmbSupplierId.setItems(supplierService.getSupplierIds());
     }
 
     private String generateProductId() {

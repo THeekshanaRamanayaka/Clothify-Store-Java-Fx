@@ -5,6 +5,7 @@ import edu.icet.repository.DaoFactory;
 import edu.icet.repository.custom.SupplierDao;
 import edu.icet.service.custom.SupplierService;
 import edu.icet.util.DaoType;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.regex.Matcher;
@@ -47,5 +48,13 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public ObservableList<Supplier> getAllSupplier() {
         return supplierDao.getAll();
+    }
+
+    @Override
+    public ObservableList<String> getSupplierIds() {
+        ObservableList<String> supplierIds = FXCollections.observableArrayList();
+        ObservableList<Supplier> supplierObservableList = getAllSupplier();
+        supplierObservableList.forEach(supplier -> supplierIds.add(supplier.getSupplierId()));
+        return supplierIds;
     }
 }
