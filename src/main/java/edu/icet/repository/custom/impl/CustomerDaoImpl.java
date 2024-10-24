@@ -114,4 +114,26 @@ public class CustomerDaoImpl implements CustomerDao {
         }
         return null;
     }
+
+    @Override
+    public Customer searchByMobileNumber(String customerMobileNumber) {
+        String SQL = "SELECT * FROM customer WHERE mobileNumber = ?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL, customerMobileNumber);
+            if (resultSet.next()) {
+                return new Customer(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7)
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }

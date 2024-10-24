@@ -1,9 +1,6 @@
 package edu.icet.service;
 
-import edu.icet.service.custom.impl.CustomerServiceImpl;
-import edu.icet.service.custom.impl.EmployeeServiceImpl;
-import edu.icet.service.custom.impl.ProductServiceImpl;
-import edu.icet.service.custom.impl.SupplierServiceImpl;
+import edu.icet.service.custom.impl.*;
 import edu.icet.util.ServiceType;
 
 public class ServiceFactory {
@@ -20,6 +17,7 @@ public class ServiceFactory {
             case Product -> (T) new ProductServiceImpl();
             case Customer -> (T) new CustomerServiceImpl();
             case Supplier -> (T) new SupplierServiceImpl();
+            case PlaceOrder -> (T) new PlaceOrderServiceImpl();
         };
     }
 }

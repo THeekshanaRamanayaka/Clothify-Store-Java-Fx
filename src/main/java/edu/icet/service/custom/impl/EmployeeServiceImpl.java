@@ -5,6 +5,7 @@ import edu.icet.repository.DaoFactory;
 import edu.icet.repository.custom.EmployeeDao;
 import edu.icet.service.custom.EmployeeService;
 import edu.icet.util.DaoType;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.regex.Matcher;
@@ -47,5 +48,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean updateEmployee(Employee employee) {
         employeeDao.update(employee);
         return true;
+    }
+
+    @Override
+    public ObservableList<String> getEmployeeIds() {
+        ObservableList<String> employeeIds = FXCollections.observableArrayList();
+        ObservableList<Employee> employeeObservableList = getAllEmployees();
+        employeeObservableList.forEach(employee -> employeeIds.add(employee.getEmployeeId()));
+        return employeeIds;
     }
 }

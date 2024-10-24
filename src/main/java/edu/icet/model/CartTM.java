@@ -11,8 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class OrderDetails {
-    private String orderId;
+public class CartTM {
     private String productId;
     private String productDescription;
     private Integer orderedQuantity;

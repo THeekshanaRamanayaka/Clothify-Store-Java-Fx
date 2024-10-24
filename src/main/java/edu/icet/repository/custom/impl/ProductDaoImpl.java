@@ -1,5 +1,6 @@
 package edu.icet.repository.custom.impl;
 
+import edu.icet.model.OrderDetails;
 import edu.icet.model.Product;
 import edu.icet.model.ProductDetails;
 import edu.icet.repository.custom.ProductDao;
@@ -9,6 +10,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
     @Override
@@ -143,5 +145,40 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Product getProductDetailsByDescription(String productDescription) {
+        String SQL = "SELECT * FROM product WHERE productDescription = ?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL, productDescription);
+            if (resultSet.next()) {
+                return new Product(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDouble(4),
+                        resultSet.getDouble(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
+                        resultSet.getString(8)
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean updateStock(List<OrderDetails> orderDetails) throws SQLException {
+        for (OrderDetails details : orderDetails) {
+            boolean updated = CrudUtil.execute("UPDATE product SET quantity = quantity - ? WHERE productId = ?",
+                    details.getOrderedQuantity(),
+                    details.getProductId()
+            );
+            if (!updated) return false;
+        }
+        return true;
     }
 }

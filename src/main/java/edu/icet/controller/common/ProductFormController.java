@@ -138,12 +138,12 @@ public class ProductFormController implements Initializable {
         });
         loadTable();
 
+        loadSupplierIds();
         cmbSupplierId.getSelectionModel().selectedItemProperty().addListener((observableValue, s, newValue) -> {
             if (newValue != null) {
                 searchSupplierNames(newValue);
             }
         });
-        loadSupplierNames();
     }
 
     private void searchSupplierNames(String supplierId) {
@@ -162,7 +162,7 @@ public class ProductFormController implements Initializable {
         cmbSupplierId.setValue(newValue.getSupplierId());
     }
 
-    private void loadSupplierNames() {
+    private void loadSupplierIds() {
         cmbSupplierId.setItems(supplierService.getSupplierIds());
     }
 

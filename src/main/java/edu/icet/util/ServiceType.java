@@ -1,5 +1,5 @@
 package edu.icet.util;
 
 public enum ServiceType {
-    Employee, Product, Customer, Supplier
+    Employee, Product, Customer, Supplier, PlaceOrder
 }

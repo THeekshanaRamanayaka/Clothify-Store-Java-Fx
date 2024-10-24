@@ -5,4 +5,5 @@ import edu.icet.repository.CrudDao;
 
 public interface CustomerDao extends CrudDao<Customer> {
     String findLastId();
+    Customer searchByMobileNumber(String customerMobileNumber);
 }

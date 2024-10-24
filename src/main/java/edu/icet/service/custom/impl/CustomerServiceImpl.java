@@ -5,6 +5,7 @@ import edu.icet.repository.DaoFactory;
 import edu.icet.repository.custom.CustomerDao;
 import edu.icet.service.custom.CustomerService;
 import edu.icet.util.DaoType;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.regex.Matcher;
@@ -47,5 +48,18 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public ObservableList<Customer> getAllCustomers() {
         return customerDao.getAll();
+    }
+
+    @Override
+    public ObservableList<String> getCustomersContacts() {
+        ObservableList<String> customersContacts = FXCollections.observableArrayList();
+        ObservableList<Customer> customerObservableList = getAllCustomers();
+        customerObservableList.forEach(customer -> customersContacts.add(customer.getMobileNumber()));
+        return customersContacts;
+    }
+
+    @Override
+    public Customer searchCustomerByMobileNumber(String customerMobileNumber) {
+        return customerDao.searchByMobileNumber(customerMobileNumber);
     }
 }
