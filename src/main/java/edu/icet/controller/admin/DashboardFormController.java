@@ -37,32 +37,8 @@ public class DashboardFormController implements Initializable {
     }
 
     @FXML
-    void btnCustomersOnAction() {
-        loadForm("/view/common/customer_form.fxml");
-    }
-
-    @FXML
     void btnDashboardOnAction() {
         loadForm("/view/admin/dash_details_form.fxml");
-    }
-
-    @FXML
-    void btnEmployeesOnAction() {
-        loadForm("/view/admin/employee_form.fxml");
-    }
-
-    @FXML
-    void btnLogoutOnAction() {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login_form.fxml")))));
-            stage.setTitle("login page");
-            stage.setResizable(false);
-            stage.show();
-            btnLogout.getScene().getWindow().hide();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @FXML
@@ -71,13 +47,18 @@ public class DashboardFormController implements Initializable {
     }
 
     @FXML
+    void btnOrderHistoryOnAction() {
+        loadForm("/view/common/order_history_form.fxml");
+    }
+
+    @FXML
     void btnProductOnAction() {
         loadForm("/view/common/product_form.fxml");
     }
 
     @FXML
-    void btnProfileOnAction() {
-        loadForm("/view/common/profile_form.fxml");
+    void btnCustomersOnAction() {
+        loadForm("/view/common/customer_form.fxml");
     }
 
     @FXML
@@ -96,7 +77,26 @@ public class DashboardFormController implements Initializable {
     }
 
     @FXML
-    void btnOrderHistoryOnAction() {
-        loadForm("/view/common/order_history_form.fxml");
+    void btnEmployeesOnAction() {
+        loadForm("/view/admin/employee_form.fxml");
+    }
+
+    @FXML
+    void btnProfileOnAction() {
+        loadForm("/view/common/profile_form.fxml");
+    }
+
+    @FXML
+    void btnLogoutOnAction() {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login_form.fxml")))));
+            stage.setTitle("login page");
+            stage.setResizable(false);
+            stage.show();
+            btnLogout.getScene().getWindow().hide();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -131,7 +131,7 @@ public class ProductFormController implements Initializable {
         sizes.add("XXL");
         cmbSize.setItems(sizes);
 
-        tblProduct.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+        tblProduct.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 setTextToValue(newValue);
             }
@@ -139,7 +139,7 @@ public class ProductFormController implements Initializable {
         loadTable();
 
         loadSupplierIds();
-        cmbSupplierId.getSelectionModel().selectedItemProperty().addListener((observableValue, s, newValue) -> {
+        cmbSupplierId.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 searchSupplierNames(newValue);
             }
@@ -186,7 +186,7 @@ public class ProductFormController implements Initializable {
 
         txtDate.setText(dateNow);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e-> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, _ -> {
             LocalTime localTime = LocalTime.now();
             txtTime.setText(localTime.getHour() + " : " + localTime.getMinute() + " : " + localTime.getSecond());
         }),

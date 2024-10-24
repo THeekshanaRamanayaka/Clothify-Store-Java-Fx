@@ -103,7 +103,7 @@ public class CustomerFormController implements Initializable {
         titles.add("Mrs");
         cmbTitle.setItems(titles);
 
-        tblCustomers.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+        tblCustomers.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 setTextToValue(newValue);
             }
@@ -141,7 +141,7 @@ public class CustomerFormController implements Initializable {
 
         txtDate.setText(dateNow);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e-> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, _ -> {
             LocalTime localTime = LocalTime.now();
             txtTime.setText(localTime.getHour() + " : " + localTime.getMinute() + " : " + localTime.getSecond());
         }),

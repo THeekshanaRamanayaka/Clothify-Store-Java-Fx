@@ -114,7 +114,7 @@ public class EmployeeFormController implements Initializable {
         roles.add("Employee");
         cmbRole.setItems(roles);
 
-        tblEmployee.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+        tblEmployee.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 setTextToValue(newValue);
             }
@@ -153,7 +153,7 @@ public class EmployeeFormController implements Initializable {
 
         txtDate.setText(dateNow);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e-> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, _ -> {
             LocalTime localTime = LocalTime.now();
             txtTime.setText(localTime.getHour() + " : " + localTime.getMinute() + " : " + localTime.getSecond());
         }),

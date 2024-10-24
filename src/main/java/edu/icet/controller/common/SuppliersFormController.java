@@ -2,7 +2,6 @@ package edu.icet.controller.common;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import edu.icet.model.Product;
 import edu.icet.model.ProductDetails;
 import edu.icet.model.Supplier;
 import edu.icet.service.ServiceFactory;
@@ -116,7 +115,7 @@ public class SuppliersFormController implements Initializable {
         titles.add("Mrs");
         cmbTitle.setItems(titles);
 
-        tblSupplier.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+        tblSupplier.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 setTextToValueSupplier(newValue);
                 loadProductDetails(newValue.getSupplierId());
@@ -157,7 +156,7 @@ public class SuppliersFormController implements Initializable {
 
         txtDate.setText(dateNow);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e-> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, _ -> {
             LocalTime localTime = LocalTime.now();
             txtTime.setText(localTime.getHour() + " : " + localTime.getMinute() + " : " + localTime.getSecond());
         }),
