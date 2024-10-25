@@ -1,9 +1,6 @@
 package edu.icet.repository.custom.impl;
 
-import edu.icet.model.OrderDetails;
-import edu.icet.model.Orders;
-import edu.icet.model.RecentOrderDetails;
-import edu.icet.model.RecentOrders;
+import edu.icet.model.*;
 import edu.icet.repository.custom.PlaceOrderDao;
 import edu.icet.util.CrudUtil;
 import javafx.collections.FXCollections;
@@ -138,5 +135,123 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public ObservableList<SalesReturns> getAllSoldOrders() {
+        ObservableList<SalesReturns> salesReturnsObservableList = FXCollections.observableArrayList();
+        String SQL = "SELECT T1.productId, T2.productDescription, T1.orderedQuantity, T2.price, T1.orderDate, T2.discount, T2.category, T2.size, T1.amount, T1.orderId " +
+                "FROM orderDetails T1 " +
+                "INNER JOIN product T2 " +
+                "ON T1.productId = T2.productId";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL);
+            while (resultSet.next()) {
+                salesReturnsObservableList.add(new SalesReturns(
+                        resultSet.getString("productId"),
+                        resultSet.getString("productDescription"),
+                        resultSet.getInt("orderedQuantity"),
+                        resultSet.getDouble("price"),
+                        resultSet.getDate("orderDate").toLocalDate(),
+                        resultSet.getDouble("discount"),
+                        resultSet.getString("category"),
+                        resultSet.getString("size"),
+                        resultSet.getDouble("amount"),
+                        resultSet.getString("orderId")
+                ));
+            }
+            return salesReturnsObservableList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public ObservableList<SalesReturns> searchSoldOrderById(String orderId) {
+        ObservableList<SalesReturns> salesReturnsObservableList = FXCollections.observableArrayList();
+        String SQL = "SELECT T1.productId, T2.productDescription, T1.orderedQuantity, T2.price, T1.orderDate, T2.discount, T2.category, T2.size, T1.amount, T1.orderId " +
+                "FROM orderDetails T1 " +
+                "INNER JOIN product T2 " +
+                "ON T1.productId = T2.productId " +
+                "WHERE T1.orderId = ?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL, orderId);
+            while (resultSet.next()) {
+                salesReturnsObservableList.add(new SalesReturns(
+                        resultSet.getString("productId"),
+                        resultSet.getString("productDescription"),
+                        resultSet.getInt("orderedQuantity"),
+                        resultSet.getDouble("price"),
+                        resultSet.getDate("orderDate").toLocalDate(),
+                        resultSet.getDouble("discount"),
+                        resultSet.getString("category"),
+                        resultSet.getString("size"),
+                        resultSet.getDouble("amount"),
+                        resultSet.getString("orderId")
+                ));
+            }
+            return salesReturnsObservableList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public SalesReturnsDetails getOrderedQuantity(String orderId, String productId) {
+        String SQL = "SELECT T1.orderedQuantity, T2.price " +
+                "FROM orderDetails T1 " +
+                "INNER JOIN product T2 " +
+                "ON T1.productId = T2.productId " +
+                "WHERE T1.orderId = ? AND T1.productId = ?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL, orderId, productId);
+            if (resultSet.next()) {
+                return new SalesReturnsDetails(
+                        resultSet.getInt("orderedQuantity"),
+                        resultSet.getDouble("price")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean updateOrderDetail(String orderId, String productId, int incrementOrderedQuantity, Double amount) throws SQLException {
+        String SQL = "UPDATE orderDetails SET orderedQuantity = orderedQuantity + ?, amount = ? WHERE orderId = ? and productId = ?";
+        return CrudUtil.execute(SQL, incrementOrderedQuantity, amount, orderId, productId);
+    }
+
+    @Override
+    public Double updateTotalAmount(String orderId) {
+        String SQL = "SELECT SUM(amount) AS total FROM orderDetails WHERE orderId = ?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL, orderId);
+            if (resultSet.next()) {
+                return resultSet.getDouble(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0.0;
+    }
+
+    @Override
+    public boolean updateTotal(String orderId, Double totalAmount) throws SQLException {
+        String SQL = "UPDATE orders SET total = ? WHERE orderId = ?";
+        return CrudUtil.execute(SQL, totalAmount, orderId);
+    }
+
+    @Override
+    public boolean updateOrderDetailDecrement(String orderId, String productId, int decrementOrderedQuantity, Double amount) throws SQLException {
+        String SQL = "UPDATE orderDetails SET orderedQuantity = orderedQuantity - ?, amount = ? WHERE orderId = ? and productId = ?";
+        return CrudUtil.execute(SQL, decrementOrderedQuantity, amount, orderId, productId);
+    }
+
+    @Override
+    public boolean deleteProductDetail(String orderId, String productId) throws SQLException {
+        String SQL = "DELETE FROM orderDetails WHERE orderId = ? AND productId = ?";
+        return CrudUtil.execute(SQL, orderId, productId);
     }
 }

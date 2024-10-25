@@ -199,7 +199,7 @@ public class ProductFormController implements Initializable {
     @FXML
     void btnAddProductOnAction() {
         Product product = new Product(
-                lblProductId.getId(),
+                lblProductId.getText(),
                 txtDescription.getText(),
                 cmbType.getValue(),
                 Double.parseDouble(txtPrice.getText()),
@@ -209,7 +209,7 @@ public class ProductFormController implements Initializable {
                 cmbSupplierId.getValue()
         );
 
-        if (isValidProductInputDetails(product)) {
+        if (!isValidProductInputDetails(product)) {
             System.out.println(product);
             if (productService.addProduct(product)) {
                 new Alert(Alert.AlertType.INFORMATION, "Product added successful !").show();
@@ -254,7 +254,7 @@ public class ProductFormController implements Initializable {
     @FXML
     void btnUpdateOnAction() {
         Product product = new Product(
-                lblProductId.getId(),
+                lblProductId.getText(),
                 txtDescription.getText(),
                 cmbType.getValue(),
                 Double.parseDouble(txtPrice.getText()),

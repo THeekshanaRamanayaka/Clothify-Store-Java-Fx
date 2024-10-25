@@ -20,4 +20,6 @@ public interface ProductService extends SuperService {
     ObservableList<String> getProductsDescriptions();
     Product searchProductByDescription(String productDescription);
     boolean updateStock(List<OrderDetails> orderDetails) throws SQLException;
+    boolean updateQuantity(String productId, int incrementOrderedQuantity) throws SQLException;
+    boolean updateQuantityIncrement(String productId, int decrementOrderedQuantity) throws SQLException;
 }

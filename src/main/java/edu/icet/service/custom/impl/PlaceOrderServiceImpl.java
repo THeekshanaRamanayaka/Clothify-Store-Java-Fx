@@ -1,9 +1,7 @@
 package edu.icet.service.custom.impl;
 
 import edu.icet.db.DBConnection;
-import edu.icet.model.Orders;
-import edu.icet.model.RecentOrderDetails;
-import edu.icet.model.RecentOrders;
+import edu.icet.model.*;
 import edu.icet.repository.DaoFactory;
 import edu.icet.repository.custom.PlaceOrderDao;
 import edu.icet.service.ServiceFactory;
@@ -77,5 +75,128 @@ public class PlaceOrderServiceImpl implements PlaceOrderService {
     @Override
     public ObservableList<RecentOrders> searchOrder(String orderId) {
         return placeOrderDao.searchOrderById(orderId);
+    }
+
+    @Override
+    public ObservableList<SalesReturns> getAllSoldOrders() {
+        return placeOrderDao.getAllSoldOrders();
+    }
+
+    @Override
+    public ObservableList<SalesReturns> searchSoldOrder(String orderId) {
+        return placeOrderDao.searchSoldOrderById(orderId);
+    }
+
+    @Override
+    public SalesReturnsDetails getOrderedQuantity(String orderId, String productId) {
+        return placeOrderDao.getOrderedQuantity(orderId, productId);
+    }
+
+    @Override
+    public boolean updateOrder(String orderId, String productId, int incrementOrderedQuantity, Double amount) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+
+            boolean isOrderDetailUpdate = placeOrderDao.updateOrderDetail(orderId, productId, incrementOrderedQuantity, amount);
+            if (!isOrderDetailUpdate) {
+                connection.rollback();
+                return false;
+            }
+
+            Double totalAmount = placeOrderDao.updateTotalAmount(orderId);
+            System.out.println(totalAmount);
+            boolean isUpdateTotal = placeOrderDao.updateTotal(orderId, totalAmount);
+            if (!isUpdateTotal) {
+                connection.rollback();
+                return false;
+            }
+
+            boolean isUpdateStock = productService.updateQuantity(productId, incrementOrderedQuantity);
+            if (!isUpdateStock) {
+                connection.rollback();
+                return false;
+            }
+
+            connection.commit();
+            return true;
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        } finally {
+            connection.setAutoCommit(true);
+        }
+    }
+
+    @Override
+    public boolean updateOrderDecrement(String orderId, String productId, int decrementOrderedQuantity, Double amount) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+
+            boolean isOrderDetailUpdate = placeOrderDao.updateOrderDetailDecrement(orderId, productId, decrementOrderedQuantity, amount);
+            if (!isOrderDetailUpdate) {
+                connection.rollback();
+                return false;
+            }
+
+            Double totalAmount = placeOrderDao.updateTotalAmount(orderId);
+            System.out.println(totalAmount);
+            boolean isUpdateTotal = placeOrderDao.updateTotal(orderId, totalAmount);
+            if (!isUpdateTotal) {
+                connection.rollback();
+                return false;
+            }
+
+            boolean isUpdateStock = productService.updateQuantityIncrement(productId, decrementOrderedQuantity);
+            if (!isUpdateStock) {
+                connection.rollback();
+                return false;
+            }
+
+            connection.commit();
+            return true;
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        } finally {
+            connection.setAutoCommit(true);
+        }
+    }
+
+    @Override
+    public boolean placeReturn(String orderId, String productId, int quantity) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+
+            boolean isOrderDeleted = placeOrderDao.deleteProductDetail(orderId, productId);
+            if (!isOrderDeleted) {
+                connection.rollback();
+                return false;
+            }
+
+            Double totalAmount = placeOrderDao.updateTotalAmount(orderId);
+            System.out.println(totalAmount);
+            boolean isUpdateTotal = placeOrderDao.updateTotal(orderId, totalAmount);
+            if (!isUpdateTotal) {
+                connection.rollback();
+                return false;
+            }
+
+            boolean isUpdateStock = productService.updateQuantityIncrement(productId, quantity);
+            if (!isUpdateStock) {
+                connection.rollback();
+                return false;
+            }
+
+            connection.commit();
+            return true;
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        } finally {
+            connection.setAutoCommit(true);
+        }
     }
 }

@@ -181,4 +181,20 @@ public class ProductDaoImpl implements ProductDao {
         }
         return true;
     }
+
+    @Override
+    public boolean updateQuantity(String productId, int incrementOrderedQuantity) throws SQLException {
+        return CrudUtil.execute("UPDATE product SET quantity = quantity - ? WHERE productId = ?",
+                incrementOrderedQuantity,
+                productId
+        );
+    }
+
+    @Override
+    public boolean updateQuantityIncrement(String productId, int decrementOrderedQuantity) throws SQLException {
+        return CrudUtil.execute("UPDATE product SET quantity = quantity + ? WHERE productId = ?",
+                decrementOrderedQuantity,
+                productId
+        );
+    }
 }

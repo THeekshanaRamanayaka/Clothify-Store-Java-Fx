@@ -76,4 +76,14 @@ public class ProductServiceImpl implements ProductService {
     public boolean updateStock(List<OrderDetails> orderDetails) throws SQLException {
         return productDao.updateStock(orderDetails);
     }
+
+    @Override
+    public boolean updateQuantity(String productId, int incrementOrderedQuantity) throws SQLException {
+        return productDao.updateQuantity(productId, incrementOrderedQuantity);
+    }
+
+    @Override
+    public boolean updateQuantityIncrement(String productId, int decrementOrderedQuantity) throws SQLException {
+        return productDao.updateQuantityIncrement(productId, decrementOrderedQuantity);
+    }
 }

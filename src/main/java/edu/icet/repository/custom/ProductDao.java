@@ -15,4 +15,6 @@ public interface ProductDao extends CrudDao<Product> {
     ObservableList<ProductDetails> getProductDetailsById(String supplierId);
     Product getProductDetailsByDescription(String productDescription);
     boolean updateStock(List<OrderDetails> orderDetails) throws SQLException;
+    boolean updateQuantity(String productId, int incrementOrderedQuantity) throws SQLException;
+    boolean updateQuantityIncrement(String productId, int decrementOrderedQuantity) throws SQLException;
 }
