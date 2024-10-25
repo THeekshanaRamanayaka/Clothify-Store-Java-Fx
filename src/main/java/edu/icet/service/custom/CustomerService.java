@@ -13,4 +13,5 @@ public interface CustomerService extends SuperService {
     ObservableList<Customer> getAllCustomers();
     ObservableList<String> getCustomersContacts();
     Customer searchCustomerByMobileNumber(String customerMobileNumber);
+    int getNoOfCustomers();
 }

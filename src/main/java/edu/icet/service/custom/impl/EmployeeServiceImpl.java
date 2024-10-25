@@ -57,4 +57,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeObservableList.forEach(employee -> employeeIds.add(employee.getEmployeeId()));
         return employeeIds;
     }
+
+    @Override
+    public int getTotalEmployees() {
+        return employeeDao.getTotalEmployees();
+    }
 }

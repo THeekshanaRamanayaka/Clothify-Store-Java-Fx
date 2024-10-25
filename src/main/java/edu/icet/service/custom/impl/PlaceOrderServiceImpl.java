@@ -199,4 +199,9 @@ public class PlaceOrderServiceImpl implements PlaceOrderService {
             connection.setAutoCommit(true);
         }
     }
+
+    @Override
+    public Double getTotalEarning() {
+        return placeOrderDao.getTotalEarning();
+    }
 }

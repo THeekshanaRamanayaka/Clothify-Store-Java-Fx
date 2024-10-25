@@ -12,5 +12,6 @@ public interface EmployeeService extends SuperService {
     Employee searchEmployee(String employeeId);
     boolean updateEmployee(Employee employee);
     ObservableList<String> getEmployeeIds();
+    int getTotalEmployees();
 }
 

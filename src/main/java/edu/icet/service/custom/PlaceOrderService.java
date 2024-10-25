@@ -18,4 +18,5 @@ public interface PlaceOrderService extends SuperService {
     boolean updateOrder(String orderId, String productId, int incrementOrderedQuantity, Double amount) throws SQLException;
     boolean updateOrderDecrement(String orderId, String productId, int decrementOrderedQuantity, Double amount) throws SQLException;
     boolean placeReturn(String orderId, String productId, int quantity) throws SQLException;
+    Double getTotalEarning();
 }

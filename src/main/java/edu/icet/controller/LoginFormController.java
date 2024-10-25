@@ -14,6 +14,8 @@ import java.util.Objects;
 
 public class LoginFormController {
 
+    public static String userName;
+
     @FXML
     private JFXButton btnSignIn;
 

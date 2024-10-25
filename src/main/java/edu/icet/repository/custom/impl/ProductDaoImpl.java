@@ -197,4 +197,18 @@ public class ProductDaoImpl implements ProductDao {
                 productId
         );
     }
+
+    @Override
+    public int getTotalStock() {
+        String SQL = "SELECT SUM(quantity) AS totalQuantity FROM product";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL);
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
 }

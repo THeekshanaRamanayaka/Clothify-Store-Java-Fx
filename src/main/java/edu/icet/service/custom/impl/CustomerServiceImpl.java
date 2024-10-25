@@ -62,4 +62,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer searchCustomerByMobileNumber(String customerMobileNumber) {
         return customerDao.searchByMobileNumber(customerMobileNumber);
     }
+
+    @Override
+    public int getNoOfCustomers() {
+        return customerDao.getNoOfCustomers();
+    }
 }

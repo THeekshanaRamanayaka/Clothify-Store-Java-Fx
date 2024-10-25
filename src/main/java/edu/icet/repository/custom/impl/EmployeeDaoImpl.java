@@ -122,4 +122,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
         return null;
     }
+
+    @Override
+    public int getTotalEmployees() {
+        String SQL = "SELECT COUNT(*) AS total FROM employee";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL);
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
 }

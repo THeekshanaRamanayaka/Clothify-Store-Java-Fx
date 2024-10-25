@@ -254,4 +254,18 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
         String SQL = "DELETE FROM orderDetails WHERE orderId = ? AND productId = ?";
         return CrudUtil.execute(SQL, orderId, productId);
     }
+
+    @Override
+    public Double getTotalEarning() {
+        String SQL = "SELECT SUM(total) AS totalEarn FROM orders";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL);
+            if (resultSet.next()) {
+                return resultSet.getDouble(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0.0;
+    }
 }

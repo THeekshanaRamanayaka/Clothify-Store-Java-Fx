@@ -136,4 +136,18 @@ public class CustomerDaoImpl implements CustomerDao {
         }
         return null;
     }
+
+    @Override
+    public int getNoOfCustomers() {
+        String SQL = "SELECT COUNT(*) AS total FROM customer";
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL);
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
 }

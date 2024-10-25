@@ -22,4 +22,5 @@ public interface PlaceOrderDao extends SuperDao {
     boolean updateTotal(String orderId, Double totalAmount) throws SQLException;
     boolean updateOrderDetailDecrement(String orderId, String productId, int decrementOrderedQuantity, Double amount) throws SQLException;
     boolean deleteProductDetail(String orderId, String productId) throws SQLException;
+    Double getTotalEarning();
 }
