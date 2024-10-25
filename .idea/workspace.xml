@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="complete place order form and transactions">
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/DashboardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/DashboardFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/EmployeeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/admin/EmployeeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/CustomerFormController.java" afterDir="false" />
+    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="fix sum warnings">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/model/RecentOrderDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/model/RecentOrders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/OrderHistoryFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/OrderHistoryFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/PlaceOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/PlaceOrderFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/ProductFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/ProductFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/model/OrderDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/model/OrderDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/model/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/model/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/PlaceOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/PlaceOrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/impl/PlaceOrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/repository/custom/impl/PlaceOrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/PlaceOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/PlaceOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/impl/PlaceOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/service/custom/impl/PlaceOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/common/order_history_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/common/order_history_form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729805979634</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix sum warnings">
+      <option name="closed" value="true" />
+      <created>1729806866342</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729806866342</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -178,6 +196,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="supplier form controller supplier Id combo box value load update" />
     <MESSAGE value="complete place order form and transactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete place order form and transactions" />
+    <MESSAGE value="fix sum warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix sum warnings" />
   </component>
 </project>

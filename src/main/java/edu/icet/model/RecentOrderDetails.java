@@ -11,10 +11,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class OrderDetails {
-    private String orderId;
+public class RecentOrderDetails {
     private String productId;
+    private String productDescription;
     private Integer orderedQuantity;
+    private Double price;
     private LocalDate orderDate;
+    private Double discount;
+    private String category;
+    private String size;
     private Double amount;
 }

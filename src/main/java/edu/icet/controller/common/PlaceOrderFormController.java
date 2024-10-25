@@ -358,9 +358,6 @@ public class PlaceOrderFormController implements Initializable {
         String orderId = lblOrderId.getText();
         LocalDate orderDate = LocalDate.now();
         Double total = Double.valueOf(lblTotal.getText());
-        String customerName = txtCustomerName.getText();
-        String mobileNumber = cmbCustomerContactNo.getValue();
-        String email = txtCustomerEMail.getText();
         String customerId = txtCustomerId.getText();
         String employeeId = cmbEmployeeId.getValue();
         List<OrderDetails> orderDetailsList = new ArrayList<>();
@@ -368,13 +365,8 @@ public class PlaceOrderFormController implements Initializable {
         cartTMObservableList.forEach(obj -> orderDetailsList.add(new OrderDetails(
                 orderId,
                 obj.getProductId(),
-                obj.getProductDescription(),
                 obj.getOrderedQuantity(),
-                obj.getPrice(),
                 obj.getOrderDate(),
-                obj.getDiscount(),
-                obj.getCategory(),
-                obj.getSize(),
                 obj.getAmount()
         )));
 
@@ -382,9 +374,6 @@ public class PlaceOrderFormController implements Initializable {
                 orderId,
                 orderDate,
                 total,
-                customerName,
-                mobileNumber,
-                email,
                 customerId,
                 employeeId,
                 orderDetailsList

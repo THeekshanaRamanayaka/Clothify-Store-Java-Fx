@@ -249,7 +249,6 @@ public class ProductFormController implements Initializable {
     void btnSearchOnAction() {
         ObservableList<Product> productObservableList = productService.searchProduct(cmbSelectCategory.getValue());
         tblProduct.setItems(productObservableList);
-        System.out.println(cmbSelectCategory.getValue());
     }
 
     @FXML

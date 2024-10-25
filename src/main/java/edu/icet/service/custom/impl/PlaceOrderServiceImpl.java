@@ -2,6 +2,8 @@ package edu.icet.service.custom.impl;
 
 import edu.icet.db.DBConnection;
 import edu.icet.model.Orders;
+import edu.icet.model.RecentOrderDetails;
+import edu.icet.model.RecentOrders;
 import edu.icet.repository.DaoFactory;
 import edu.icet.repository.custom.PlaceOrderDao;
 import edu.icet.service.ServiceFactory;
@@ -9,6 +11,7 @@ import edu.icet.service.custom.PlaceOrderService;
 import edu.icet.service.custom.ProductService;
 import edu.icet.util.DaoType;
 import edu.icet.util.ServiceType;
+import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -59,5 +62,20 @@ public class PlaceOrderServiceImpl implements PlaceOrderService {
         } finally {
             connection.setAutoCommit(true);
         }
+    }
+
+    @Override
+    public ObservableList<RecentOrderDetails> searchOrderDetailByOrderId(String orderId) {
+        return placeOrderDao.getOrderDetailsByOrderId(orderId);
+    }
+
+    @Override
+    public ObservableList<RecentOrders> getAllOrders() {
+        return placeOrderDao.getAllOrders();
+    }
+
+    @Override
+    public ObservableList<RecentOrders> searchOrder(String orderId) {
+        return placeOrderDao.searchOrderById(orderId);
     }
 }
