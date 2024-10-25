@@ -1,5 +1,11 @@
 package edu.icet.controller.common;
 
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import edu.icet.model.*;
@@ -24,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -360,8 +367,8 @@ public class PlaceOrderFormController implements Initializable {
         Double total = Double.valueOf(lblTotal.getText());
         String customerId = txtCustomerId.getText();
         String employeeId = cmbEmployeeId.getValue();
-        List<OrderDetails> orderDetailsList = new ArrayList<>();
 
+        List<OrderDetails> orderDetailsList = new ArrayList<>();
         cartTMObservableList.forEach(obj -> orderDetailsList.add(new OrderDetails(
                 orderId,
                 obj.getProductId(),
@@ -379,6 +386,47 @@ public class PlaceOrderFormController implements Initializable {
                 orderDetailsList
         );
         placeOrder(orders);
+
+        try {
+            generatePDFInvoice(orderId, orders);
+        } catch (FileNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR, "Error generating PDF: " + e.getMessage()).show();
+        }
+    }
+
+    private void generatePDFInvoice(String orderId, Orders orders) throws FileNotFoundException {
+        String pdfPath = "Order_" + orderId + ".pdf";
+        PdfWriter writer = new PdfWriter(pdfPath);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document document = new Document(pdfDoc);
+
+        document.add(new Paragraph("Order Invoice").setBold().setFontSize(20));
+        document.add(new Paragraph("Order ID: " + orders.getOrderId()));
+        document.add(new Paragraph("Order Date: " + orders.getOrderDate()));
+        document.add(new Paragraph("Customer ID: " + orders.getCustomerId()));
+        document.add(new Paragraph("Employee ID: " + orders.getEmployeeId()));
+        document.add(new Paragraph("\nOrder Details:\n"));
+
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 4, 2, 2, 2})).useAllAvailableWidth();
+        table.addCell("Product ID");
+        table.addCell("Description");
+        table.addCell("Quantity");
+        table.addCell("Unit Price");
+        table.addCell("Amount");
+
+        for (CartTM detail : cartTMObservableList) {
+            table.addCell(detail.getProductId());
+            table.addCell(detail.getProductDescription());
+            table.addCell(String.valueOf(detail.getOrderedQuantity()));
+            table.addCell(String.format("%.2f", detail.getPrice()));
+            table.addCell(String.format("%.2f", detail.getAmount()));
+        }
+
+        document.add(table);
+        document.add(new Paragraph("\nTotal Amount: " + String.format("%.2f", orders.getTotal())));
+
+        document.close();
+        new Alert(Alert.AlertType.INFORMATION, "PDF Invoice Generated: " + pdfPath).show();
     }
 
     private void placeOrder(Orders orders) {
