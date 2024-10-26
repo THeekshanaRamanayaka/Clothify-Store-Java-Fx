@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="employee dash detail form complete">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="6047aefb-4920-48e8-a63d-6301cd3e7f9c" name="Changes" comment="pdf generate in place Order">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/icet/util/EmailUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/PlaceOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/common/PlaceOrderFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/icet/controller/PasswordResetFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/icet/controller/PasswordResetFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/password_reset_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/password_reset_form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729888289097</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="pdf generate in place Order">
+      <option name="closed" value="true" />
+      <created>1729890770849</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729890770849</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -224,6 +234,7 @@
     <MESSAGE value="sales return transaction complete" />
     <MESSAGE value="admin dash detail form complete" />
     <MESSAGE value="employee dash detail form complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="employee dash detail form complete" />
+    <MESSAGE value="pdf generate in place Order" />
+    <option name="LAST_COMMIT_MESSAGE" value="pdf generate in place Order" />
   </component>
 </project>
