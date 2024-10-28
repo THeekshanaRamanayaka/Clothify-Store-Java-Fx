@@ -93,8 +93,9 @@ public class ProductFormController implements Initializable {
     @FXML
     private Text txtTime;
 
-    ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
-    SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
+    private final ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+    private final SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
+    private ObservableList<Product> allProducts;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -247,7 +248,39 @@ public class ProductFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction() {
-        ObservableList<Product> productObservableList = productService.searchProduct(cmbSelectCategory.getValue());
+        ObservableList<Product> productObservableList = FXCollections.observableArrayList();
+        String category = cmbSelectCategory.getValue();
+
+        if(category == null){
+            new Alert(Alert.AlertType.WARNING,"Select a product Category").show();
+            return;
+        }
+
+        switch(category){
+            case "Gents":
+                for(Product product : allProducts){
+                    if(product.getCategory().equals("Gents")){
+                        productObservableList.add(product);
+                    }
+                }
+                break;
+
+            case "Kids":
+                for(Product product : allProducts){
+                    if(product.getCategory().equals("Kids")){
+                        productObservableList.add(product);
+                    }
+                }
+                break;
+
+            case "Ladies":
+                for(Product product : allProducts){
+                    if(product.getCategory().equals("Ladies")){
+                        productObservableList.add(product);
+                    }
+                }
+                break;
+        }
         tblProduct.setItems(productObservableList);
     }
 
@@ -289,7 +322,7 @@ public class ProductFormController implements Initializable {
     }
 
     private void loadTable() {
-        ObservableList<Product> productObservableList = productService.getAllProducts();
-        tblProduct.setItems(productObservableList);
+        allProducts = productService.getAllProducts();
+        tblProduct.setItems(allProducts);
     }
 }

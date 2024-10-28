@@ -90,13 +90,14 @@ public class SuppliersFormController implements Initializable {
     @FXML
     private Text txtTime;
 
-    SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
-    ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+    private final SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
+    private final ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+    private ObservableList<Supplier> supplierObservableList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadDateAndTime();
-        lblSupplierId.setText(generateEmployeeId());
+        lblSupplierId.setText(generateSupplierId());
 
         colSupplierId.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -121,7 +122,24 @@ public class SuppliersFormController implements Initializable {
                 loadProductDetails(newValue.getSupplierId());
             }
         });
-        loadTable();
+        loadSuppliers();
+
+        txtSearch.textProperty().addListener((_, _, newValue) -> searchSuppliers(newValue));
+    }
+
+    private void searchSuppliers(String searchQuery) {
+        ObservableList<Supplier> filteredEmployees = FXCollections.observableArrayList();
+
+        if (searchQuery == null || searchQuery.isEmpty()) {
+            loadSuppliers();
+        } else {
+            for (Supplier supplier : supplierObservableList) {
+                if (supplier.getSupplierName().toLowerCase().contains(searchQuery.toLowerCase())) {
+                    filteredEmployees.add(supplier);
+                }
+            }
+            loadTable(filteredEmployees);
+        }
     }
 
     private void loadProductDetails(String supplierId) {
@@ -129,7 +147,7 @@ public class SuppliersFormController implements Initializable {
         tblItemDetails.setItems(productObservableList);
     }
 
-    private String generateEmployeeId() {
+    private String generateSupplierId() {
         String base = "#S";
         int integer = Integer.parseInt(supplierService.generateEmployeeId());
         if (integer < 10) {
@@ -186,7 +204,7 @@ public class SuppliersFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR, "Please fill out all fields correctly !").show();
         }
-        loadTable();
+        loadSuppliers();
         clearInputFields();
     }
 
@@ -230,7 +248,7 @@ public class SuppliersFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR).show();
         }
-        loadTable();
+        loadSuppliers();
         clearInputFields();
     }
 
@@ -259,12 +277,12 @@ public class SuppliersFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR, "Please fill out all fields correctly !").show();
         }
-        loadTable();
+        loadSuppliers();
         clearInputFields();
     }
 
     private void clearInputFields() {
-        lblSupplierId.setText(generateEmployeeId());
+        lblSupplierId.setText(generateSupplierId());
         cmbTitle.setValue(null);
         txtName.setText("");
         txtEMail.setText("");
@@ -272,8 +290,12 @@ public class SuppliersFormController implements Initializable {
         txtCompany.setText("");
     }
 
-    private void loadTable() {
-        ObservableList<Supplier> supplierObservableList = supplierService.getAllSupplier();
-        tblSupplier.setItems(supplierObservableList);
+    private void loadSuppliers() {
+        supplierObservableList = supplierService.getAllSupplier();
+        loadTable(supplierObservableList);
+    }
+
+    private void loadTable(ObservableList<Supplier> filteredSupplierList) {
+        tblSupplier.setItems(filteredSupplierList);
     }
 }

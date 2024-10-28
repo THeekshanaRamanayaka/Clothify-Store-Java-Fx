@@ -9,6 +9,7 @@ import edu.icet.util.ServiceType;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -89,7 +90,8 @@ public class OrderHistoryFormController implements Initializable {
     @FXML
     private Text txtTime;
 
-    PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
+    private final PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
+    private ObservableList<RecentOrders> recentOrdersObservableList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -118,12 +120,33 @@ public class OrderHistoryFormController implements Initializable {
                 loadOrderDetails(newValue.getOrderId());
             }
         });
-        loadTable();
+        loadRecentOrders();
+
+        txtOrderId.textProperty().addListener((_, _, newValue) -> searchRecentOrders(newValue));
     }
 
-    private void loadTable() {
-        ObservableList<RecentOrders> recentOrdersObservableList = placeOrderService.getAllOrders();
-        tblOrderHistory.setItems(recentOrdersObservableList);
+    private void searchRecentOrders(String searchQuery) {
+        ObservableList<RecentOrders> filteredEmployees = FXCollections.observableArrayList();
+
+        if (searchQuery == null || searchQuery.isEmpty()) {
+            loadRecentOrders();
+        } else {
+            for (RecentOrders recentOrders : recentOrdersObservableList) {
+                if (recentOrders.getEmployeeName().toLowerCase().contains(searchQuery.toLowerCase())) {
+                    filteredEmployees.add(recentOrders);
+                }
+            }
+            loadTable(filteredEmployees);
+        }
+    }
+
+    private void loadRecentOrders() {
+        recentOrdersObservableList = placeOrderService.getAllOrders();
+        loadTable(recentOrdersObservableList);
+    }
+
+    private void loadTable(ObservableList<RecentOrders> filteredOrderList) {
+        tblOrderHistory.setItems(filteredOrderList);
     }
 
     private void loadOrderDetails(String orderId) {

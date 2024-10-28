@@ -82,7 +82,8 @@ public class CustomerFormController implements Initializable {
     @FXML
     private Text txtTime;
 
-    CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.Customer);
+    private final CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.Customer);
+    private ObservableList<Customer> customerObservableList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -108,7 +109,24 @@ public class CustomerFormController implements Initializable {
                 setTextToValue(newValue);
             }
         });
-        loadTable();
+        loadCustomers();
+
+        txtSearch.textProperty().addListener((_, _, newValue) -> searchCustomer(newValue));
+    }
+
+    private void searchCustomer(String searchQuery) {
+        ObservableList<Customer> filteredEmployees = FXCollections.observableArrayList();
+
+        if (searchQuery == null || searchQuery.isEmpty()) {
+            loadCustomers();
+        } else {
+            for (Customer customer : customerObservableList) {
+                if (customer.getCustomerName().toLowerCase().contains(searchQuery.toLowerCase())) {
+                    filteredEmployees.add(customer);
+                }
+            }
+            loadTable(filteredEmployees);
+        }
     }
 
     private String generateCustomerId() {
@@ -172,7 +190,7 @@ public class CustomerFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR,"Please fill out all fields correctly !").show();
         }
-        loadTable();
+        loadCustomers();
         clearInputFields();
     }
 
@@ -221,7 +239,7 @@ public class CustomerFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR).show();
         }
-        loadTable();
+        loadCustomers();
         clearInputFields();
     }
 
@@ -251,7 +269,7 @@ public class CustomerFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR, "Please fill out all fields correctly !").show();
         }
-        loadTable();
+        loadCustomers();
         clearInputFields();
     }
 
@@ -265,8 +283,12 @@ public class CustomerFormController implements Initializable {
         txtCity.setText("");
     }
 
-    private void loadTable() {
-        ObservableList<Customer> customerObservableList = customerService.getAllCustomers();
-        tblCustomers.setItems(customerObservableList);
+    private void loadCustomers() {
+        customerObservableList = customerService.getAllCustomers();
+        loadTable(customerObservableList);
+    }
+
+    private void loadTable(ObservableList<Customer> filteredCustomerList) {
+        tblCustomers.setItems(filteredCustomerList);
     }
 }

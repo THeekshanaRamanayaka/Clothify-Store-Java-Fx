@@ -88,7 +88,8 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private Text txtTime;
 
-    EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+    private final EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+    private ObservableList<Employee> employeeObservableList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -119,7 +120,23 @@ public class EmployeeFormController implements Initializable {
                 setTextToValue(newValue);
             }
         });
-        loadTable();
+        loadEmployees();
+
+        txtSearch.textProperty().addListener((_, _, newValue) -> searchEmployee(newValue));
+    }
+    
+    private void searchEmployee(String searchQuery) {
+        ObservableList<Employee> filteredEmployees = FXCollections.observableArrayList();
+        if (searchQuery == null || searchQuery.isEmpty()) {
+            loadEmployees();
+        } else {
+            for (Employee employee : employeeObservableList) {
+                if (employee.getEmployeeName().toLowerCase().contains(searchQuery.toLowerCase())) {
+                    filteredEmployees.add(employee);
+                }
+            }
+            loadTable(filteredEmployees);
+        }
     }
 
     private String generateEmployeeId() {
@@ -143,7 +160,7 @@ public class EmployeeFormController implements Initializable {
         txtMobileNumber.setText(newValue.getMobileNumber());
         txtCity.setText(newValue.getCompany());
         txtPassword.setText(newValue.getLoginPassword());
-        txtPassword.setDisable(true);
+        txtPassword.setVisible(false);
     }
 
     private void loadDateAndTime() {
@@ -187,7 +204,7 @@ public class EmployeeFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR,"Please fill out all fields correctly !").show();
         }
-        loadTable();
+        loadEmployees();
         clearInputFields();
     }
 
@@ -249,7 +266,7 @@ public class EmployeeFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR).show();
         }
-        loadTable();
+        loadEmployees();
         clearInputFields();
     }
 
@@ -281,7 +298,7 @@ public class EmployeeFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR,"Please fill out all fields correctly !").show();
         }
-        loadTable();
+        loadEmployees();
         clearInputFields();
     }
 
@@ -299,12 +316,16 @@ public class EmployeeFormController implements Initializable {
         txtEMail.setText("");
         txtMobileNumber.setText("");
         txtCity.setText("");
-        txtPassword.setDisable(false);
+        txtPassword.setVisible(true);
         txtPassword.setText("");
     }
 
-    private void loadTable() {
-        ObservableList<Employee> employeeObservableList = employeeService.getAllEmployees();
-        tblEmployee.setItems(employeeObservableList);
+    private void loadEmployees() {
+        employeeObservableList = employeeService.getAllEmployees();
+        loadTable(employeeObservableList);
+    }
+
+    private void loadTable(ObservableList<Employee> filteredEmployeeList) {
+        tblEmployee.setItems(filteredEmployeeList);
     }
 }

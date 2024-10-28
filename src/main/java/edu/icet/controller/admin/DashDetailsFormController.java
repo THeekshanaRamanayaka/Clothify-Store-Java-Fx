@@ -1,5 +1,7 @@
 package edu.icet.controller.admin;
 
+import edu.icet.controller.LoginFormController;
+import edu.icet.model.Employee;
 import edu.icet.model.RecentOrders;
 import edu.icet.service.ServiceFactory;
 import edu.icet.service.custom.CustomerService;
@@ -77,14 +79,17 @@ public class DashDetailsFormController implements Initializable {
     @FXML
     private Text txtTotalStock;
 
-    PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
-    CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.Customer);
-    ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
-    EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+    private final PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
+    private final CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.Customer);
+    private final ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+    private final EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+    private final Employee employee = LoginFormController.CURRENT_EMPLOYEE;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadDateAndTime();
+        txtEmployeeName.setText(employee.getEmployeeName()+"!");
+
         colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));

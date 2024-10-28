@@ -106,21 +106,19 @@ public class PasswordResetFormController implements Initializable {
 
     @FXML
     void btnConformOnAction() {
-//        String newPass = new Encryptor().encryptString(txtNewPassword.getText());
-//        String confirmPass = new Encryptor().encryptString(txtConformPassword.getText());
         String newPass = txtNewPassword.getText();
         String confirmPass = txtConformPassword.getText();
 
         if (newPass.isEmpty() || confirmPass.isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please fill all fields.").show();
         }
-
         if (!newPass.equals(confirmPass)) {
             new  Alert(Alert.AlertType.ERROR, "Passwords don't match.").show();
             return;
         }
 
         employee.setLoginPassword(newPass);
+        System.out.println(employee);
         if (employeeService.updateEmployee(employee)) {
             new Alert(Alert.AlertType.INFORMATION, "Password updated successfully !").show();
             Stage stage = new Stage();

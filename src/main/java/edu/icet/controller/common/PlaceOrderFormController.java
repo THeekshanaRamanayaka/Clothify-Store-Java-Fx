@@ -3,6 +3,7 @@ package edu.icet.controller.common;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
@@ -129,10 +130,10 @@ public class PlaceOrderFormController implements Initializable {
     @FXML
     private Text txtTime;
 
-    PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
-    EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
-    CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.Customer);
-    ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+    private final PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
+    private final EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+    private final CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.Customer);
+    private final ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
     ObservableList<CartTM> cartTMObservableList = FXCollections.observableArrayList();
 
     @Override
@@ -407,19 +408,15 @@ public class PlaceOrderFormController implements Initializable {
         document.add(new Paragraph("Employee ID: " + orders.getEmployeeId()));
         document.add(new Paragraph("\nOrder Details:\n"));
 
-        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 4, 2, 2, 2})).useAllAvailableWidth();
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 2, 2})).useAllAvailableWidth();
         table.addCell("Product ID");
-        table.addCell("Description");
         table.addCell("Quantity");
-        table.addCell("Unit Price");
         table.addCell("Amount");
 
-        for (CartTM detail : cartTMObservableList) {
-            table.addCell(detail.getProductId());
-            table.addCell(detail.getProductDescription());
-            table.addCell(String.valueOf(detail.getOrderedQuantity()));
-            table.addCell(String.format("%.2f", detail.getPrice()));
-            table.addCell(String.format("%.2f", detail.getAmount()));
+        for (OrderDetails detail : orders.getOrderDetails()) {
+            table.addCell(new Cell().add(new Paragraph(detail.getProductId())));
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(detail.getOrderedQuantity()))));
+            table.addCell(new Cell().add(new Paragraph(String.format("%.2f", detail.getAmount()))));
         }
 
         document.add(table);
@@ -444,13 +441,10 @@ public class PlaceOrderFormController implements Initializable {
 
     private void resetForm() {
         btnClearOnAction();
-
         cartTMObservableList.clear();
         tblPlaceOrder.refresh();
-
         lblTotal.setText("0.00");
         lblTotalDiscount.setText("0.00");
-
         lblOrderId.setText(generateOrderId());
 
         loadEmployeeIds();

@@ -5,6 +5,7 @@ import edu.icet.repository.DaoFactory;
 import edu.icet.repository.custom.EmployeeDao;
 import edu.icet.service.custom.EmployeeService;
 import edu.icet.util.DaoType;
+import edu.icet.util.Encryption;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -16,6 +17,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean addEmployee(Employee employee) {
+        String hashedPassword = Encryption.hashPassword(employee.getLoginPassword());
+        employee.setLoginPassword(hashedPassword);
         employeeDao.save(employee);
         return true;
     }
@@ -46,6 +49,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean updateEmployee(Employee employee) {
+        String hashedPassword = Encryption.hashPassword(employee.getLoginPassword());
+        employee.setLoginPassword(hashedPassword);
         employeeDao.update(employee);
         return true;
     }

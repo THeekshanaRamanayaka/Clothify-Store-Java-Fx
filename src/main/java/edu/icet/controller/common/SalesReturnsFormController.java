@@ -78,7 +78,7 @@ public class SalesReturnsFormController implements Initializable {
     @FXML
     private JFXTextField txtTotal;
 
-    PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
+    private final PlaceOrderService placeOrderService = ServiceFactory.getInstance().getServiceType(ServiceType.PlaceOrder);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
